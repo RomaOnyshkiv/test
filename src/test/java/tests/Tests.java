@@ -8,7 +8,7 @@ import pages.MortgagesPage;
 
 public class Tests extends ParentTest{
 
-    MortgagesPage mortgagesPage;
+    private MortgagesPage mortgagesPage;
 
     @BeforeTest
     public void beforeTest(){
