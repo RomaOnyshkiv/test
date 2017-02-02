@@ -13,7 +13,6 @@ public class CalculatePaymentPage extends ParentPage {
 
     private By purchasePrice = By.xpath("//*[@id=\"form_calculateur_versements\"]/div[2]/div/div[2]/div/div[1]/div[9]");
     private By purchasePricePlus = By.id("PrixProprietePlus");
-    private By purchasePriceField = By.id("sliderPrixPropriete");
     private By downPaymentSlider = By.id("MiseDeFondPlus");
     private By amortization = By.id("Amortissement");
     private By frequency = By.id("FrequenceVersement");
@@ -26,7 +25,6 @@ public class CalculatePaymentPage extends ParentPage {
     public void moveSliders(){
         moveSlider(purchasePrice);
         Assert.assertTrue(validateSlider(purchasePrice));
-//        increaseValue(purchasePricePlus, purchasePriceField);
         clickOn(purchasePricePlus);
         clickOn(purchasePricePlus);
         clickOn(downPaymentSlider);
@@ -40,10 +38,6 @@ public class CalculatePaymentPage extends ParentPage {
         clickOn(calculate);
         waitForPageLoaded();
         waitFor(5);
-        Assert.assertEquals(getTextValue(paymentRes), "$ 836.75");
-    }
-
-    public void checkPayment() {
         Assert.assertEquals(getTextValue(paymentRes), "$ 836.75");
     }
 

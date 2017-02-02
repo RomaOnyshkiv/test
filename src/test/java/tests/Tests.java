@@ -26,6 +26,5 @@ public class Tests extends ParentTest{
         calculatePaymentPage = new CalculatePaymentPage(getDriver());
         calculatePaymentPage.moveSliders();
         calculatePaymentPage.changeDropDownsAndText();
-//        calculatePaymentPage.checkPayment();
     }
 }

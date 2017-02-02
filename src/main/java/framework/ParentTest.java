@@ -7,7 +7,7 @@ import pages.HomePage;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-public class ParentTest extends Reporter {
+public class ParentTest {
 
     private File driverPath = new File("./src/main/resources/driver/chromedriver");
     private static WebDriver driver;

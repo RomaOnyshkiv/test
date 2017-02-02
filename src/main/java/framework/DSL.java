@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.concurrent.TimeUnit;
 
-public class DSL extends Reporter{
+public class DSL{
     private WebDriver driver;
 
     public DSL(WebDriver driver) {
