@@ -17,6 +17,7 @@ public class HomePage extends ParentPage {
 
 
     public void changeLangAndGoToMortgages(){
+        reporter.log("Method 'changeLangAndGoToMortgages' is started", true);
         clickOn(lang);
         waitForPageLoaded();
         clickOn(Loans);

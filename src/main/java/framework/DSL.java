@@ -6,10 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Reporter;
 
 import java.util.concurrent.TimeUnit;
 
-public class DSL{
+public class DSL extends ReporterForMyTest{
     private WebDriver driver;
 
     public DSL(WebDriver driver) {
@@ -17,64 +18,64 @@ public class DSL{
     }
 
     private WebElement getEl(By by){
-        WebElement element = driver.findElement(by);
-        return element;
+        return driver.findElement(by);
     }
 
-    public void clickOn(By by) {
+    protected void clickOn(By by) {
         driver.findElement(by).click();
-        System.out.println("[INFO] Clicked on " + by.toString());
+        reporter.log("Clicked element " + by.toString(), true);
     }
 
-    public void enterText(By by, String text) {
+    protected void enterText(By by, String text) {
         driver.findElement(by).clear();
         driver.findElement(by).sendKeys(text);
-        System.out.println("[INFO] Entered text is " + text);
+        reporter.log("Entered text " + text, true);
     }
 
-    public String pageTitle(){
-        System.out.println("[INFO] The title is " + driver.getTitle());
+    protected String pageTitle(){
+        reporter.log("The title is " + driver.getTitle(), true);
         return driver.getTitle();
     }
 
-    public void waitForPageLoaded(){
+    protected void waitForPageLoaded(){
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
     }
 
-    public void moveSlider(By by) {
+    protected void moveSlider(By by) {
         Actions moveSlider = new Actions(driver);
         Action action = moveSlider.clickAndHold(getEl(by)).moveByOffset(50, 0).release().build();
         action.perform();
-        System.out.println("[INFO] Sleded is moved");
+        reporter.log("Slider is moved", true);
     }
 
-    public String getTextValue(By by){
+    protected String getTextValue(By by){
         String rez = getEl(by).getText();
-        System.out.println("[INFO] the text is " + rez);
+        reporter.log("The text is " + rez, true);
         return rez;
     }
 
-    public boolean validateSlider(By by){
+    protected boolean validateSlider(By by){
         boolean pass;
         if (getEl(by).getCssValue("style") != "left: 0%;") {
             pass = true;
-            System.out.println("[INFO] Slider is moved");
+            reporter.log("Slider is moved (Validation)", true);
         } else {
             pass = false;
-            System.out.println("[INFO] Slider was not moved");
+            reporter.log("Slider was not moved (validation)", true);
         }
         return pass;
     }
 
-    public void selectDropDown(By by, String value){
+    protected void selectDropDown(By by, String value){
         Select select = new Select(driver.findElement(by));
         select.selectByValue(value);
-        System.out.println("[INFO] Selected value is " + value);
+        reporter.log("Selected value is " + value, true);
     }
 
-    public void waitFor(int sec){
+    protected void waitFor(int sec){
         try {
             Thread.sleep(sec * 1000);
+            reporter.log("Wait for " + sec + " seconds", true);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -23,6 +23,7 @@ public class CalculatePaymentPage extends ParentPage {
 
 
     public void moveSliders(){
+        reporter.log("Method 'moveSliders' is started");
         moveSlider(purchasePrice);
         Assert.assertTrue(validateSlider(purchasePrice));
         clickOn(purchasePricePlus);
@@ -31,6 +32,7 @@ public class CalculatePaymentPage extends ParentPage {
     }
 
     public void changeDropDownsAndText(){
+        reporter.log("Method 'changeDropDownsAndText' is started");
         selectDropDown(amortization, "15");
         enterText(rate, "5");
         selectDropDown(frequency, "52");

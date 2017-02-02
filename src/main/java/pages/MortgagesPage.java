@@ -13,6 +13,7 @@ public class MortgagesPage extends ParentPage{
     private By calcPayment = By.partialLinkText("Calculate your payments");
 
     public void calculateYourPayments(){
+        reporter.log("Method 'calculateYourPayments' is started", true);
         clickOn(calcPayment);
     }
 }
