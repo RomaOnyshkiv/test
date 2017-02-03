@@ -15,7 +15,6 @@ public class Tests extends ParentTest{
     @BeforeTest
     public void beforeTest(){
         startBrowser();
-        myReporter();
     }
 
     @Test
